@@ -16,15 +16,20 @@ public class Main {
         priceList.check();
         buyer.buy();
         billing.invoice();
-
+        buyer.pay();
 
     }
 
     static class Buyer {
+
         String asking = read.nextLine();
         String isThere = asking;
         void buy(){
+            System.out.println();
             System.out.println("Buying...");
+        }
+        void pay(){
+            System.out.println("Payment sent ");
         }
     }
 
@@ -61,14 +66,14 @@ public class Main {
         int[] shoePrice = new int[]{1100, 2100, 1300, 4100, 5100, 1600, 1700, 1800, 1900, 9011};
 
         void check() {
-            System.out.println("The price of "+ buyer.isThere +" is P"+shoePrice[Integer.parseInt(String.valueOf(setShoeList().indexOf(buyer.isThere)))]);
+            System.out.println("The price of "+ buyer.isThere +" is P"+shoePrice[(setShoeList().indexOf(buyer.isThere))]);
         }
-
     }
 
         static class Billing extends PriceList{
-        String[] inv = new String[]{" ", "ITEM",buyer.isThere.toUpperCase(Locale.ROOT)," ", " "," ", " ", "TOTAL", String.valueOf(shoePrice[Integer.parseInt(String.valueOf(setShoeList().indexOf(buyer.isThere)))])," "};
+        String[] inv = new String[]{" ", "ITEM",buyer.isThere.toUpperCase(Locale.ROOT)," ", " "," ", " ", "TOTAL", String.valueOf(shoePrice[setShoeList().indexOf(buyer.isThere)])," "};
         void invoice(){
+            System.out.println();
             System.out.println(" ============================================");
             System.out.println("                    Invoice");
             for (int i = 0; i < 10; i++) {
