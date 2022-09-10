@@ -10,18 +10,20 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Is this shoe available?: " );
         buyer.asking();
+        System.out.println("How may I address you?: " );
 
         Seller seller = new Seller();
-
+        buyer.name();
         seller.isAvailable();
+        seller.available();
         seller.sPrice();
         buyer.buy();
         seller.invoice();
         buyer.pay();
-
     }
 
-    static class Buyer{
+    static class Buyer extends Seller{
+        String myName;
         String isThere;
         String asking(){
             String asking = read.nextLine();
@@ -35,20 +37,32 @@ public class Main {
         void pay(){
             System.out.println("Payment sent ");
         }
+        String name(){
+            String name = read.nextLine();
+            return myName = name;
+        }
+
+
     }
 
     static class Seller extends Billing{
 
-        void isAvailable() {
-            if (setShoeList().contains(buyer.isThere)) {
+        boolean isAvail;
+        boolean isAvailable() {
+            return isAvail = setShoeList().contains(buyer.isThere);
+        }
+        void available(){
+            if (isAvail) {
                 System.out.println(buyer.isThere+" is available");
-            } else
-                System.out.println("Sorry, " + buyer.isThere + " is not available");
+            }else{
+                System.out.println("Sorry, " + buyer.myName+" "+ buyer.isThere + " is not available yet");
+                System.exit(0);
+            }
         }
 
     }
 
-    static class ShoeShelves {
+    static class ShoeShelves  {
         ArrayList<String> shoeList = new ArrayList<>();
         ArrayList<String> setShoeList() {
             shoeList.add("Airforce 1");
@@ -73,8 +87,9 @@ public class Main {
     }
 
         static class Billing extends PriceList{
-        String[] inv = new String[]{" ", "ITEM",buyer.isThere.toUpperCase(Locale.ROOT)," ", " "," ", " ", "TOTAL", String.valueOf(shoePrice[setShoeList().indexOf(buyer.isThere)])," "};
+
         void invoice(){
+            String[] inv = new String[]{" ","NAME                               " + buyer.myName , " ", "ITEM                           "+ buyer.isThere.toUpperCase(Locale.ROOT)," ",  " ", "TOTAL                             "+ (shoePrice[setShoeList().indexOf(buyer.isThere)])," ", " ", " "};
             System.out.println();
             System.out.println(" ============================================");
             System.out.println("                    Invoice");
