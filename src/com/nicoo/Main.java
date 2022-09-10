@@ -1,3 +1,12 @@
+/*
+Activity 5
+CADA, GIANNA ALYANNA
+CLOMA, PRANZ ANGELO
+ESCOBAL, YVONNE
+LLOSA, EDUARDO DOMINICO
+QUINONEZ, DIANA RYNE
+CSCC 20 B - OBJECT-ORIENTED PROGRAMMING
+*/
 package com.nicoo;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -25,9 +34,8 @@ public class Main {
     static class Buyer extends Seller{
         String myName;
         String isThere;
-        String asking(){
-            String asking = read.nextLine();
-            return isThere = asking;
+        void asking(){
+            isThere = read.nextLine();
         }
 
         void buy(){
@@ -37,19 +45,16 @@ public class Main {
         void pay(){
             System.out.println("Payment sent ");
         }
-        String name(){
-            String name = read.nextLine();
-            return myName = name;
+        void name(){
+            myName = read.nextLine();
         }
-
-
     }
 
     static class Seller extends Billing{
 
         boolean isAvail;
-        boolean isAvailable() {
-            return isAvail = setShoeList().contains(buyer.isThere);
+        void isAvailable() {
+            isAvail = setShoeList().contains(buyer.isThere);
         }
         void available(){
             if (isAvail) {
@@ -89,7 +94,7 @@ public class Main {
         static class Billing extends PriceList{
 
         void invoice(){
-            String[] inv = new String[]{" ","NAME                               " + buyer.myName , " ", "ITEM                           "+ buyer.isThere.toUpperCase(Locale.ROOT)," ",  " ", "TOTAL                             "+ (shoePrice[setShoeList().indexOf(buyer.isThere)])," ", " ", " "};
+            String[] inv = new String[]{" ","NAME                           " + buyer.myName , " ", "ITEM                           "+ buyer.isThere.toUpperCase(Locale.ROOT)," ",  " ", "TOTAL                             "+ (shoePrice[setShoeList().indexOf(buyer.isThere)])," ", " ", " "};
             System.out.println();
             System.out.println(" ============================================");
             System.out.println("                    Invoice");
