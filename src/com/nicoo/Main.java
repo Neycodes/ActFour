@@ -19,13 +19,16 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Is this shoe available?: " );
         buyer.asking();
-        System.out.println("How may I address you?: " );
+
 
         Seller seller = new Seller();
-        buyer.name();
+
         seller.isAvailable();
         seller.available();
         seller.sPrice();
+
+        System.out.println("How may I address you?: " );
+        buyer.name();
         buyer.buy();
         seller.invoice();
         buyer.pay();
@@ -60,7 +63,7 @@ public class Main {
             if (isAvail) {
                 System.out.println(buyer.isThere+" is available");
             }else{
-                System.out.println("Sorry, " + buyer.myName+" "+ buyer.isThere + " is not available yet");
+                System.out.println("Sorry, "+ buyer.isThere + " is not available yet");
                 System.exit(0);
             }
         }
