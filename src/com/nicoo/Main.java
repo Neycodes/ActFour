@@ -61,7 +61,7 @@ public class Main {
         }
         void available(){
             if (isAvail) {
-                System.out.println(buyer.isThere+" is available");
+                System.out.println( "Yes "+buyer.isThere+" is available");
             }else{
                 System.out.println("Sorry, "+ buyer.isThere + " is not available yet");
                 System.exit(0);
@@ -90,6 +90,7 @@ public class Main {
     static class PriceList extends ShoeShelves {
         int[] shoePrice = new int[]{1100, 2100, 1300, 4100, 5100, 1600, 1700, 1800, 1900, 9011};
          void sPrice(){
+             System.out.println(    );
              System.out.println("The price of "+ buyer.isThere +" is P"+shoePrice[(setShoeList().indexOf(buyer.isThere))]);
          }
     }
@@ -97,7 +98,7 @@ public class Main {
         static class Billing extends PriceList{
 
         void invoice(){
-            String[] inv = new String[]{" ","NAME                           " + buyer.myName , " ", "ITEM                           "+ buyer.isThere.toUpperCase(Locale.ROOT)," ",  " ", "TOTAL                             "+ (shoePrice[setShoeList().indexOf(buyer.isThere)])," ", " ", " "};
+            String[] inv = new String[]{" ","NAME                           " + buyer.myName.toUpperCase(Locale.ROOT) , " ", "ITEM                           "+ buyer.isThere.toUpperCase(Locale.ROOT)," ",  " "," ", "TOTAL                           P    "+ (shoePrice[setShoeList().indexOf(buyer.isThere)]), " ", " "};
             System.out.println();
             System.out.println(" ============================================");
             System.out.println("                    Invoice");
