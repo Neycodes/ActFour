@@ -8,22 +8,26 @@ public class Main {
     static Scanner read = new Scanner(System.in);
     static Buyer buyer = new Buyer();
     public static void main(String[] args) {
-        System.out.println("Is this shoe available?: " + buyer.isThere);
-        Billing billing = new Billing();
+        System.out.println("Is this shoe available?: " );
+        buyer.asking();
+
         Seller seller = new Seller();
-        PriceList priceList = new PriceList();
-        seller.yesItIs();
-        priceList.check();
+
+        seller.isAvailable();
+        seller.sPrice();
         buyer.buy();
-        billing.invoice();
+        seller.invoice();
         buyer.pay();
 
     }
 
-    static class Buyer {
+    static class Buyer{
+        String isThere;
+        String asking(){
+            String asking = read.nextLine();
+            return isThere = asking;
+        }
 
-        String asking = read.nextLine();
-        String isThere = asking;
         void buy(){
             System.out.println();
             System.out.println("Buying...");
@@ -34,15 +38,14 @@ public class Main {
     }
 
     static class Seller extends Billing{
-        ShoeShelves shoeShelves = new ShoeShelves();
 
-        void yesItIs() {
-            if (shoeShelves.setShoeList().contains(buyer.isThere)) {
+        void isAvailable() {
+            if (setShoeList().contains(buyer.isThere)) {
                 System.out.println(buyer.isThere+" is available");
             } else
                 System.out.println("Sorry, " + buyer.isThere + " is not available");
-
         }
+
     }
 
     static class ShoeShelves {
@@ -64,10 +67,9 @@ public class Main {
 
     static class PriceList extends ShoeShelves {
         int[] shoePrice = new int[]{1100, 2100, 1300, 4100, 5100, 1600, 1700, 1800, 1900, 9011};
-
-        void check() {
-            System.out.println("The price of "+ buyer.isThere +" is P"+shoePrice[(setShoeList().indexOf(buyer.isThere))]);
-        }
+         void sPrice(){
+             System.out.println("The price of "+ buyer.isThere +" is P"+shoePrice[(setShoeList().indexOf(buyer.isThere))]);
+         }
     }
 
         static class Billing extends PriceList{
@@ -81,6 +83,7 @@ public class Main {
             }
             System.out.println(" ============================================");
         }
+
     }
 }
 
